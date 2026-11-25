@@ -1,0 +1,556 @@
+
+
+:root {
+  --verde-fundo: #D3ECD8;
+  --verde-claro: #B4DDBB;
+  --verde-medio: #97CFA1;
+  --verde-brilho: #E4F4E6;
+  --verde-texto: #1F3A2E;
+  --verde-texto-suave: #3F5E4F;
+
+  --roxo: #5B3A8C;
+  --roxo-escuro: #46296F;
+  --lavanda: #D9CCF0;
+
+  --branco: #FBFEFB;
+
+  --fonte-titulo: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --fonte-texto: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --largura: 1120px;
+  --lateral: clamp(20px, 5vw, 48px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  background: var(--verde-fundo);
+  color: var(--verde-texto);
+  font-family: var(--fonte-texto);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--roxo);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.pular {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  padding: 10px 16px;
+  background: var(--roxo);
+  color: var(--branco);
+  border-radius: 8px;
+  z-index: 100;
+}
+
+.pular:focus {
+  top: 12px;
+}
+
+/* ---------- Tipografia ---------- */
+
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 6.2vw, 4.8rem);
+}
+
+h2 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* ---------- Botões ---------- */
+
+.botao {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.botao-pequeno {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+}
+
+.botao-roxo {
+  background: var(--roxo);
+  color: var(--branco);
+}
+
+.botao-roxo:hover {
+  background: var(--roxo-escuro);
+}
+
+.botao-contorno {
+  border-color: var(--verde-texto);
+  color: var(--verde-texto);
+}
+
+.botao-contorno:hover {
+  background: var(--verde-texto);
+  color: var(--verde-fundo);
+}
+
+.botao-claro {
+  background: var(--verde-brilho);
+  color: var(--roxo-escuro);
+}
+
+.botao-claro:hover {
+  background: var(--branco);
+}
+
+/* ---------- Topo ---------- */
+
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px var(--lateral);
+  background: rgba(211, 236, 216, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--verde-claro);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.marca strong {
+  color: var(--roxo);
+}
+
+.marca-icone {
+  width: 28px;
+  height: 28px;
+  background: var(--verde-claro);
+  border-radius: 8px 8px 0 0;
+}
+
+.menu {
+  display: flex;
+  gap: 28px;
+  margin-left: auto;
+}
+
+.menu a {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.menu a:hover {
+  border-bottom-color: var(--roxo);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 96px) var(--lateral);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(32px, 6vw, 80px);
+}
+
+.hero-sub {
+  margin-top: 24px;
+  font-size: 1.2rem;
+  color: var(--verde-texto-suave);
+}
+
+.hero-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.hero-arte svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Único movimento da página: os arcos "respiram" devagar */
+.arco {
+  transform-origin: 240px 520px;
+  animation: respirar 7s ease-in-out infinite alternate;
+}
+
+.arco-2 { animation-delay: 0.4s; }
+.arco-3 { animation-delay: 0.8s; }
+.arco-4 { animation-delay: 1.2s; }
+
+.sol {
+  transform-origin: 240px 226px;
+  animation: respirar-sol 7s ease-in-out infinite alternate;
+  animation-delay: 1.2s;
+}
+
+@keyframes respirar {
+  from { transform: scale(1); }
+  to   { transform: scale(1.03); }
+}
+
+@keyframes respirar-sol {
+  from { transform: scale(1); }
+  to   { transform: scale(1.12); }
+}
+
+/* ---------- Seções ---------- */
+
+.secao {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: clamp(56px, 9vw, 112px) var(--lateral);
+}
+
+/* ---------- Sobre ---------- */
+
+.sobre {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  align-items: center;
+  gap: clamp(32px, 7vw, 96px);
+}
+
+.sobre-moldura {
+  background: var(--lavanda);
+  border-radius: 999px 999px 0 0;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  max-width: 380px;
+  width: 100%;
+}
+
+.sobre-moldura svg,
+.sobre-moldura img {
+  width: 70%;
+}
+
+.sobre-moldura img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sobre-texto h2 {
+  margin-bottom: 24px;
+}
+
+.sobre-texto p + p {
+  margin-top: 16px;
+}
+
+/* ---------- Aulas ---------- */
+
+.aulas {
+  border-top: 1px solid var(--verde-claro);
+}
+
+.aulas-intro {
+  margin-top: 16px;
+  color: var(--verde-texto-suave);
+}
+
+.aulas-lista {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.aula {
+  background: var(--verde-claro);
+  border-radius: 999px 999px 20px 20px;
+  padding: 72px 28px 36px;
+  text-align: center;
+}
+
+.aula:nth-child(2) {
+  background: var(--lavanda);
+}
+
+.aula h3 {
+  margin-bottom: 12px;
+}
+
+.aula p {
+  margin: 0 auto;
+  font-size: 1rem;
+}
+/*---------- Espaço-----------*/
+.espaço {
+  border-top: 1px solid var(--verde-claro);
+}
+
+.espaço-intro {
+  margin-top: 16px;
+  color: var(--verde-texto-suave);
+}
+
+.espaço-lista {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.espaço {
+  background: var(--verde-claro);
+  border-radius: 999px 999px 20px 20px;
+  padding: 72px 28px 36px;
+  text-align: center;
+}
+
+.espaço:nth-child(2) {
+  background: var(--lavanda);
+}
+
+.espaço h3 {
+  margin-bottom: 12px;
+}
+
+.espaço p {
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+
+/* ---------- Benefícios ---------- */
+
+.beneficios {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(32px, 7vw, 96px);
+  align-items: start;
+}
+
+.beneficios h2 {
+  position: sticky;
+  top: 110px;
+}
+
+.beneficios-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.beneficios-lista li {
+  padding: 28px 0 28px 28px;
+  border-top: 1px solid var(--verde-medio);
+  border-left: 6px solid var(--roxo);
+  border-top-left-radius: 0;
+  margin-bottom: 0;
+}
+
+.beneficios-lista li + li {
+  margin-top: 0;
+}
+
+.beneficios-lista h3 {
+  margin-bottom: 8px;
+}
+
+.beneficios-lista p {
+  color: var(--verde-texto-suave);
+}
+
+/* ---------- Contato ---------- */
+
+.contato {
+  background: var(--roxo);
+  color: var(--branco);
+  border-radius: 48px 48px 0 0;
+  padding: clamp(56px, 9vw, 104px) var(--lateral);
+}
+
+.contato-miolo {
+  max-width: var(--largura);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 7vw, 96px);
+  align-items: start;
+}
+
+.contato-chamada h2 {
+  margin-bottom: 16px;
+}
+
+.contato-chamada p {
+  margin-bottom: 32px;
+  color: var(--lavanda);
+}
+
+.contato-dados {
+  margin: 0;
+  display: grid;
+  gap: 24px;
+}
+
+.contato-dados dt {
+  font-family: var(--fonte-titulo);
+  font-size: 1.05rem;
+  color: var(--verde-medio);
+  margin-bottom: 2px;
+}
+
+.contato-dados dd {
+  margin: 0;
+}
+
+.contato-dados a {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.contato :focus-visible {
+  outline-color: var(--verde-brilho);
+}
+
+/* ---------- Rodapé ---------- */
+
+.rodape {
+  background: var(--roxo);
+  color: var(--lavanda);
+  padding: 24px var(--lateral) 32px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(251, 254, 251, 0.18);
+}
+
+.rodape p {
+  max-width: none;
+}
+
+/* ---------- Telas menores ---------- */
+
+@media (max-width: 860px) {
+  .hero,
+  .sobre,
+  .beneficios,
+  .contato-miolo {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-arte {
+    order: -1;
+    max-width: 300px;
+  }
+
+  .aulas-lista {
+    grid-template-columns: 1fr;
+  }
+
+  .aula {
+    border-radius: 80px 80px 20px 20px;
+    padding-top: 48px;
+  }
+
+  .beneficios h2 {
+    position: static;
+  }
+
+  .sobre-moldura {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu {
+    display: none;
+  }
+
+  .topo {
+    justify-content: space-between;
+  }
+
+  .contato {
+    border-radius: 32px 32px 0 0;
+  }
+}
+
+/* ---------- Movimento reduzido ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .arco,
+  .sol {
+    animation: none;
+  }
+}
